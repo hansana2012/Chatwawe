@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatWave — Connect Instantly</title>
+<link rel="stylesheet" href="style.css"></link>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+ 
+<!-- ─────────────── LANDING ─────────────── -->
+<div id="landing" class="page active">
+  <div class="land-bg"></div>
+  <div class="land-grid"></div>
+ 
+  <nav class="land-nav">
+    <div class="logo"><span class="logo-dot"></span> ChatWave</div>
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="showPage('login')">Sign In</button>
+      <button class="btn btn-primary" onclick="showPage('register')">Get Started</button>
+    </div>
+  </nav>
+ 
+  <div class="land-hero">
+    <div class="hero-badge">✦ <span>Beautifully simple</span> real-time chat</div>
+    <h1 class="hero-h1">Talk to anyone,<br><em>anywhere.</em></h1>
+    <p class="hero-sub">ChatWave brings people together with an instant, elegant messaging experience built for the modern web.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" onclick="showPage('register')">Start chatting free →</button>
+      <button class="btn btn-ghost btn-lg" onclick="showPage('login')">Sign in</button>
+    </div>
+ 
+    <div class="hero-preview">
+      <div class="preview-bar">
+        <div class="preview-dot" style="background:#ef4444"></div>
+        <div class="preview-dot" style="background:#f59e0b"></div>
+        <div class="preview-dot" style="background:#22c55e"></div>
+      </div>
+      <div class="preview-msgs">
+        <div class="prev-msg left">
+          <div class="prev-avatar" style="background:#2f6be8">A</div>
+          <div class="prev-bubble">Hey! Did you see the new feature? 🎉</div>
+        </div>
+        <div class="prev-msg right">
+          <div class="prev-avatar" style="background:#e85d2f">Y</div>
+          <div class="prev-bubble">Just tried it — it's incredible. Love the new UI!</div>
+        </div>
+        <div class="prev-msg left">
+          <div class="prev-avatar" style="background:#2f6be8">A</div>
+          <div class="prev-bubble">Right? ChatWave keeps getting better 🚀</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <section class="features">
+    <div class="feat-header">
+      <div class="feat-label">Why ChatWave</div>
+      <h2>Everything you need<br>to stay connected</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Instant Delivery</h3>
+        <p>Messages are delivered instantly with real-time sync across all your devices without any delay.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎨</div>
+        <h3>Custom Profiles</h3>
+        <p>Express yourself with a personalized profile — choose your avatar color, bio, and display name.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h3>Secure & Private</h3>
+        <p>Your conversations are kept private and secure. We never share or sell your personal data.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌐</div>
+        <h3>Works Everywhere</h3>
+        <p>Fully responsive design works beautifully on desktop, tablet, and mobile browsers.</p>
+      </div>
+    </div>
+  </section>
+ 
+  <footer class="land-footer">
+    <p>© 2026 ChatWave · Built with ❤ · <a href="#" onclick="showPage('login')">Sign In</a> · <a href="#" onclick="showPage('register')">Register</a></p>
+  </footer>
+</div>
+ 
+<!-- ─────────────── LOGIN ─────────────── -->
+<div id="login" class="page">
+  <div class="auth-card" style="margin:auto">
+    <div class="auth-logo"><span class="logo-dot"></span> ChatWave</div>
+    <h2>Welcome back</h2>
+    <p class="auth-sub">Sign in to continue your conversations.</p>
+ 
+    <div class="error-msg" id="login-error">Invalid email or password.</div>
+ 
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="you@example.com" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="login-pw" placeholder="••••••••" />
+    </div>
+    <div class="form-footer">
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+        <input type="checkbox" id="remember-me" style="width:auto;padding:0"> Remember me
+      </label>
+      <a href="#">Forgot password?</a>
+    </div>
+ 
+    <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In →</button>
+ 
+    <div class="auth-switch">
+      Don't have an account? <a onclick="showPage('register')">Create one</a>
+    </div>
+    <div class="auth-switch" style="margin-top:10px">
+      <a onclick="showPage('landing')" style="color:var(--muted)">← Back to home</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ─────────────── REGISTER ─────────────── -->
+<div id="register" class="page">
+  <div class="auth-card" style="margin:auto">
+    <div class="auth-logo"><span class="logo-dot"></span> ChatWave</div>
+    <h2>Create account</h2>
+    <p class="auth-sub">Join ChatWave and start messaging today.</p>
+ 
+    <div class="error-msg" id="reg-error"></div>
+ 
+    <div class="field-row">
+      <div class="field">
+        <label>First name</label>
+        <input type="text" id="reg-first" placeholder="Jane" />
+      </div>
+      <div class="field">
+        <label>Last name</label>
+        <input type="text" id="reg-last" placeholder="Doe" />
+      </div>
+    </div>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" id="reg-username" placeholder="janedoe" />
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="reg-email" placeholder="you@example.com" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="reg-pw" placeholder="At least 6 characters" />
+    </div>
+ 
+    <button class="btn btn-primary btn-full" onclick="doRegister()" style="margin-top:8px">Create account →</button>
+ 
+    <div class="auth-switch" style="margin-top:16px">
+      Already have an account? <a onclick="showPage('login')">Sign in</a>
+    </div>
+    <div class="auth-switch" style="margin-top:10px">
+      <a onclick="showPage('landing')" style="color:var(--muted)">← Back to home</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ─────────────── CHAT ─────────────── -->
+<div id="chat" class="page">
+ 
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Messages</div>
+        <div class="sidebar-actions">
+          <button class="icon-btn" title="New Chat" onclick="openNewChatModal()">✏️</button>
+          <button class="icon-btn" title="Profile" onclick="openProfileModal()">👤</button>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="contact-search" placeholder="Search conversations…" oninput="filterContacts(this.value)" />
+      </div>
+    </div>
+ 
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" onclick="setTab(this,'all')">All</button>
+      <button class="tab-btn" onclick="setTab(this,'online')">Online</button>
+      <button class="tab-btn" onclick="setTab(this,'groups')">Groups</button>
+    </div>
+ 
+    <div class="contact-list" id="contact-list"></div>
+ 
+    <div class="sidebar-profile">
+      <div class="avatar avatar-sm">
+        <div class="avatar-img" id="my-sidebar-avatar" style="background:var(--accent)">U</div>
+        <div class="status-dot"></div>
+      </div>
+      <div class="profile-info">
+        <div class="profile-name" id="my-sidebar-name">User</div>
+        <div class="profile-status">Active now</div>
+      </div>
+      <button class="icon-btn" onclick="openProfileModal()" title="Edit Profile">⚙️</button>
+    </div>
+  </aside>
+ 
+  <!-- Main -->
+  <main class="chat-main" id="chat-main">
+    <!-- empty state -->
+    <div class="chat-empty" id="chat-empty">
+      <div class="empty-icon">💬</div>
+      <h3>Your messages</h3>
+      <p>Select a conversation or start a new one to begin chatting.</p>
+      <button class="btn btn-primary" style="margin-top:20px" onclick="openNewChatModal()">Start a new chat</button>
+    </div>
+ 
+    <!-- active chat (hidden until selected) -->
+    <div id="active-chat" style="display:none;flex-direction:column;height:100vh;overflow:hidden;display:none">
+ 
+      <div class="chat-header">
+        <div class="avatar">
+          <div class="avatar-img" id="chat-avatar" style="background:var(--accent2)">A</div>
+          <div class="status-dot" id="chat-status-dot"></div>
+        </div>
+        <div class="chat-user-info">
+          <div class="chat-username" id="chat-name">Alice</div>
+          <div class="chat-user-status" id="chat-status-text">Active now</div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="icon-btn" title="View Profile" onclick="toggleProfilePanel()">👁️</button>
+          <button class="icon-btn" title="Search Messages">🔍</button>
+          <button class="icon-btn" title="More options">⋯</button>
+        </div>
+      </div>
+ 
+      <div class="messages-area" id="messages-area"></div>
+ 
+      <div class="chat-input-area">
+        <div class="typing-indicator" id="typing-indicator"></div>
+        <div class="input-box">
+          <div class="input-tools">
+            <button class="input-tool-btn" title="Emoji" onclick="insertEmoji()">😊</button>
+            <button class="input-tool-btn" title="Attachment">📎</button>
+          </div>
+          <textarea id="msg-input" placeholder="Write a message…" rows="1"
+            onkeydown="handleInputKey(event)" oninput="autoResize(this);showTyping()"></textarea>
+          <button class="send-btn" onclick="sendMessage()" title="Send">➤</button>
+        </div>
+      </div>
+    </div>
+  </main>
+ 
+  <!-- Profile panel (right) -->
+  <div class="profile-panel" id="profile-panel">
+    <div class="profile-panel-header">
+      <h3>Profile</h3>
+      <button class="icon-btn" onclick="toggleProfilePanel()">✕</button>
+    </div>
+    <div class="profile-big-avatar" id="pp-avatar" style="background:var(--accent2)">A</div>
+    <div class="profile-panel-name" id="pp-name">Alice</div>
+    <div class="profile-panel-status" id="pp-status">Active now</div>
+    <div class="divider"></div>
+    <div class="profile-detail-row">
+      <span class="icon">📧</span>
+      <div>
+        <div class="label">Email</div>
+        <div class="val" id="pp-email">alice@example.com</div>
+      </div>
+    </div>
+    <div class="profile-detail-row">
+      <span class="icon">👤</span>
+      <div>
+        <div class="label">Username</div>
+        <div class="val" id="pp-username">@alice</div>
+      </div>
+    </div>
+    <div class="profile-detail-row">
+      <span class="icon">📝</span>
+      <div>
+        <div class="label">Bio</div>
+        <div class="val" id="pp-bio">No bio yet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ─────────────── PROFILE MODAL ─────────────── -->
+<div class="modal-overlay" id="profile-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Edit Profile</h3>
+      <button class="modal-close" onclick="closeModal('profile-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="avatar-edit-wrap">
+        <div class="avatar-edit-large" id="edit-avatar" onclick="triggerAvatarColorPick()">
+          <span id="edit-avatar-letter">U</span>
+          <div class="avatar-edit-overlay">🎨</div>
+        </div>
+        <div class="color-picker-row" id="color-picker-row"></div>
+      </div>
+ 
+      <div class="field-row">
+        <div class="field">
+          <label>First name</label>
+          <input type="text" id="edit-first" />
+        </div>
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" id="edit-last" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="edit-username" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="edit-email" />
+      </div>
+      <div class="field">
+        <label>Bio</label>
+        <textarea id="edit-bio" rows="3" style="border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--paper);padding:12px;font-family:'DM Sans',sans-serif;font-size:0.9rem;width:100%;outline:none;resize:vertical;" placeholder="Tell people about yourself…"></textarea>
+      </div>
+      <div class="field">
+        <label>New Password (leave blank to keep)</label>
+        <input type="password" id="edit-pw" placeholder="••••••••" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('profile-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ─────────────── NEW CHAT MODAL ─────────────── -->
+<div class="modal-overlay" id="new-chat-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>New Conversation</h3>
+      <button class="modal-close" onclick="closeModal('new-chat-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="user-search-input" placeholder="Search users…" oninput="searchUsers(this.value)" style="padding-left:38px" />
+      </div>
+      <div class="user-search-list" id="user-search-list"></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ─────────────── TOAST ─────────────── -->
+<div class="toast-container" id="toast-container"></div>
+<script src="script.js"></script>
+</body>
+</html>
+ 
